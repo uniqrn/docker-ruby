@@ -1,4 +1,4 @@
-FROM uniqrn/alpine:3.10
+FROM uniqrn/alpine:v3.10
 LABEL maintainer "unicorn research Ltd"
 
 # derived from
