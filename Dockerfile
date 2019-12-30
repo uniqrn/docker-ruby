@@ -2,7 +2,7 @@ FROM debian:buster-20190910-slim
 LABEL maintainer "unicorn research Ltd"
 
 # derived from
-# https://github.com/docker-library/ruby/blob/8565a59602d3a95f5e858eb758aba0dcd6fce007/2.6/buster/slim/Dockerfile
+# https://github.com/docker-library/ruby/blob/e0f00b9a0841c8b0f78faecd07afb4c5754b3c27/2.7/buster/slim/Dockerfile
 RUN set -eux; \
 	apt-get update; \
 	apt-get install -y --no-install-recommends \
@@ -25,9 +25,9 @@ RUN set -eux; \
 		echo 'update: --no-document'; \
 	} >> /usr/local/etc/gemrc
 
-ENV RUBY_MAJOR 2.6
-ENV RUBY_VERSION 2.6.5
-ENV RUBY_DOWNLOAD_SHA256 d5d6da717fd48524596f9b78ac5a2eeb9691753da5c06923a6c31190abe01a62
+ENV RUBY_MAJOR 2.7
+ENV RUBY_VERSION 2.7.0
+ENV RUBY_DOWNLOAD_SHA256 27d350a52a02b53034ca0794efe518667d558f152656c2baaf08f3d0c8b02343
 
 # some of ruby's build scripts are written in ruby
 #   we purge system ruby later to make sure our final image uses what we just built
