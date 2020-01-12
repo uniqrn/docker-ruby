@@ -134,7 +134,7 @@ RUN CONFARGS=$(nginx -V 2>&1 | sed -n -e 's/^.*arguments: //p' | sed -n -e 's/ -
     && ./configure --with-ngx-src-root=$NGINXDIR --enable-dynamic-module \
     && make mrbgems_config_dynamic \
     && cd $NGINXDIR \
-    && ./configure --with-compat $CONFARGS --add-dynamic-module=$MODDIR \
+    && ./configure --with-compat $CONFARGS  --add-dynamic-module=$MODDIR/dependence/ngx_devel_kit --add-dynamic-module=$MODDIR \
     && make modules
 
 
@@ -148,6 +148,7 @@ RUN set -eux; \
 	; \
 	rm -rf /var/lib/apt/lists/*
 
+COPY --from=builder /root/nginx-$NGINX_VERSION/objs/ndk_http_module.so /usr/lib/nginx/modules/ndk_http_module.so
 COPY --from=builder /root/nginx-$NGINX_VERSION/objs/ngx_http_mruby_module.so /usr/lib/nginx/modules/ngx_http_mruby_module.so
 COPY nginx.conf /etc/nginx/nginx.conf
 CMD ["nginx", "-g", "daemon off;"]
